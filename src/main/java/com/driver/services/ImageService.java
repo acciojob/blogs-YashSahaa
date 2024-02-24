@@ -22,11 +22,23 @@ public class ImageService {
         List<Image> imageList = blog.getImageList();
         imageList.add(image);
         blog.setImageList(imageList);
+        image.setBlog(blog);
         imageRepository2.save(image);
         return image;
     }
 
     public void deleteImage(Integer id){
+        Image image = imageRepository2.findById(id).orElse(null);
+        if(image==null) return;
+        Blog blog = image.getBlog();
+        List<Image> imageList = blog.getImageList();
+        for(int i=0;i<imageList.size();i++){
+            if(imageList.get(i)==image){
+                imageList.remove(i);
+                break;
+            }
+        }
+        blog.setImageList(imageList);
         imageRepository2.deleteById(id);
     }
 
