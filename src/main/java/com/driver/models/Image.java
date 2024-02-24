@@ -13,6 +13,7 @@ public class Image {
     String description;
     String dimensions;
 
+    Blog blog;
     public Image() {
     }
 
@@ -43,5 +44,13 @@ public class Image {
 
     public void setDimensions(String dimensions) {
         this.dimensions = dimensions;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }

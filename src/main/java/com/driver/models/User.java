@@ -13,7 +13,7 @@ public class User {
     int id;
     String username;
     String password;
-    List<Blog> blogs;
+    List<Blog> blogList;
 
     public User() {
     }
@@ -21,7 +21,7 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.blogs = new ArrayList<Blog>();
+        this.blogList = new ArrayList<Blog>();
     }
 
     public int getId() {
@@ -48,11 +48,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Blog> getBlogs() {
-        return blogs;
+    public List<Blog> getBlogList() {
+        return blogList;
     }
 
-    public void setBlogs(List<Blog> blogs) {
-        this.blogs = blogs;
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
     }
 }

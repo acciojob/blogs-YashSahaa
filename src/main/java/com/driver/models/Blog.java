@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -14,15 +15,18 @@ public class Blog {
     int id;
     String title;
     String content;
-    List<Image> images ;
+    Date pubDate;
+    List<Image> imageList;
 
+    User user;
     public Blog() {
     }
 
-    public Blog(String title, String content) {
+    public Blog(String title, String content,Date pubDate) {
         this.title = title;
         this.content = content;
-        this.images = new ArrayList<Image>();
+        this.pubDate = pubDate;
+        this.imageList = new ArrayList<Image>();
     }
 
     public int getId() {
@@ -49,11 +53,27 @@ public class Blog {
         this.content = content;
     }
 
-    public List<Image> getImages() {
-        return images;
+    public List<Image> getImageList() {
+        return imageList;
     }
 
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Date getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 }

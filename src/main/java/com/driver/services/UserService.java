@@ -22,7 +22,7 @@ public class UserService {
 
     public void deleteUser(int userId){
         User user = userRepository3.findById(userId).orElse(null);
-        List<Blog> blogList = user.getBlogs();
+        List<Blog> blogList = user.getBlogList();
         for(Blog blog : blogList){
             blogService.deleteBlog(blog.getId());
         }
