@@ -13,6 +13,9 @@ public class Image {
     String discreption;
     String dimension;
 
+    public Image() {
+    }
+
     public Image(String discreption, String dimension) {
         this.discreption = discreption;
         this.dimension = dimension;

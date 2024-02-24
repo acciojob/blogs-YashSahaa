@@ -17,6 +17,9 @@ public class Blog {
     String content;
     List<Image> images ;
 
+    public Blog() {
+    }
+
     public Blog(String title, String content) {
         this.title = title;
         this.content = content;

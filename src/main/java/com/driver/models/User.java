@@ -15,6 +15,9 @@ public class User {
     String password;
     List<Blog> blogs;
 
+    public User() {
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
