@@ -10,7 +10,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int userid;
+    int id;
     String username;
     String password;
     List<Blog> blogs;
@@ -24,8 +24,12 @@ public class User {
         this.blogs = new ArrayList<Blog>();
     }
 
-    public int getUserid() {
-        return userid;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {

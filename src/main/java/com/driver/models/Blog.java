@@ -1,5 +1,4 @@
 package com.driver.models;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,7 @@ import java.util.List;
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int blogid;
+    int id;
     String title;
     String content;
     List<Image> images ;
@@ -26,8 +25,12 @@ public class Blog {
         this.images = new ArrayList<Image>();
     }
 
-    public int getBlogid() {
-        return blogid;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

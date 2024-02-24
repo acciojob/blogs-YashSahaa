@@ -9,35 +9,39 @@ import javax.persistence.Id;
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int imageid;
-    String discreption;
-    String dimension;
+    int id;
+    String description;
+    String dimensions;
 
     public Image() {
     }
 
     public Image(String discreption, String dimension) {
-        this.discreption = discreption;
-        this.dimension = dimension;
+        this.description = discreption;
+        this.dimensions = dimension;
     }
 
-    public int getImageid() {
-        return imageid;
+    public int getId() {
+        return id;
     }
 
-    public String getDiscreption() {
-        return discreption;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setDiscreption(String discreption) {
-        this.discreption = discreption;
+    public String getDescription() {
+        return description;
     }
 
-    public String getDimension() {
-        return dimension;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+    public String getDimensions() {
+        return dimensions;
+    }
+
+    public void setDimensions(String dimensions) {
+        this.dimensions = dimensions;
     }
 }

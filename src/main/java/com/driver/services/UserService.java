@@ -5,7 +5,6 @@ import com.driver.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,7 +24,7 @@ public class UserService {
         User user = userRepository3.findById(userId).orElse(null);
         List<Blog> blogList = user.getBlogs();
         for(Blog blog : blogList){
-            blogService.deleteBlog(blog.getBlogid());
+            blogService.deleteBlog(blog.getId());
         }
         userRepository3.deleteById(userId);
     }
