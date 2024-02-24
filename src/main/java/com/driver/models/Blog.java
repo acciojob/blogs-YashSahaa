@@ -30,10 +30,6 @@ public class Blog {
         return blogid;
     }
 
-    public void setBlogid(int blogid) {
-        this.blogid = blogid;
-    }
-
     public String getTitle() {
         return title;
     }

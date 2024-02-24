@@ -25,10 +25,6 @@ public class Image {
         return imageid;
     }
 
-    public void setImageid(int imageid) {
-        this.imageid = imageid;
-    }
-
     public String getDiscreption() {
         return discreption;
     }
