@@ -17,7 +17,7 @@ public class ImageService {
 
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
-        Blog blog = blogRepository2.findById(blogId).orElse(null);
+        Blog blog = blogRepository2.findById(blogId).get();
         Image image = new Image();
         image.setDescription(description);
         image.setDimensions(dimensions);
@@ -30,8 +30,7 @@ public class ImageService {
     }
 
     public void deleteImage(Integer id){
-        Image image = imageRepository2.findById(id).orElse(null);
-        if(image==null) return;
+        Image image = imageRepository2.findById(id).get();
         Blog blog = image.getBlog();
         List<Image> imageList = blog.getImageList();
         for(int i=0;i<imageList.size();i++){

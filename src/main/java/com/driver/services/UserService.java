@@ -25,8 +25,7 @@ public class UserService {
     }
 
     public void deleteUser(int userId){
-        User user = userRepository3.findById(userId).orElse(null);
-        if(user == null) return ;
+        User user = userRepository3.findById(userId).get();
         List<Blog> blogList = user.getBlogList();
         for(Blog blog : blogList){
             blogService.deleteBlog(blog.getId());
@@ -35,8 +34,7 @@ public class UserService {
     }
 
     public User updateUser(Integer id, String password){
-        User user = userRepository3.findById(id).orElse(null);
-        if(user == null) return null;
+        User user = userRepository3.findById(id).get();
         userRepository3.deleteById(id);
         user.setPassword(password);
         userRepository3.save(user);
