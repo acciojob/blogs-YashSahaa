@@ -24,6 +24,8 @@ public class ImageService {
         List<Image> imageList = blog.getImageList();
         imageList.add(image);
         blog.setImageList(imageList);
+        blogRepository2.deleteById(blogId);
+        blogRepository2.save(blog);
         image.setBlog(blog);
         imageRepository2.save(image);
         return image;
@@ -40,6 +42,8 @@ public class ImageService {
             }
         }
         blog.setImageList(imageList);
+        blogRepository2.deleteById(blog.getId());
+        blogRepository2.save(blog);
         imageRepository2.deleteById(id);
     }
 

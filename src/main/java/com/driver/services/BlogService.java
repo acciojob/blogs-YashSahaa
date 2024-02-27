@@ -34,6 +34,8 @@ public class BlogService {
         List<Blog> blogList = user.getBlogList();
         blogList.add(blog);
         user.setBlogList(blogList);
+        userRepository1.deleteById(userId);
+        userRepository1.save(user);
         blog.setUser(user);
         blogRepository1.save(blog);
         return blog;
@@ -55,6 +57,8 @@ public class BlogService {
             }
         }
         user.setBlogList(blogList);
+        userRepository1.deleteById(user.getId());
+        userRepository1.save(user);
         blogRepository1.deleteById(blogId);
     }
 }
