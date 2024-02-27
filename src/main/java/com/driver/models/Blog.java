@@ -17,16 +17,8 @@ public class Blog {
     String content;
     Date pubDate;
     List<Image> imageList;
-
     User user;
     public Blog() {
-    }
-
-    public Blog(String title, String content,Date pubDate) {
-        this.title = title;
-        this.content = content;
-        this.pubDate = pubDate;
-        this.imageList = new ArrayList<Image>();
     }
 
     public int getId() {

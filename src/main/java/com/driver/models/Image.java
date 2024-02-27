@@ -17,10 +17,6 @@ public class Image {
     public Image() {
     }
 
-    public Image(String discreption, String dimension) {
-        this.description = discreption;
-        this.dimensions = dimension;
-    }
 
     public int getId() {
         return id;

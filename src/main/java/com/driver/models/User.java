@@ -18,11 +18,6 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-        this.blogList = new ArrayList<Blog>();
-    }
 
     public int getId() {
         return id;

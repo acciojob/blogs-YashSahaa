@@ -18,7 +18,9 @@ public class ImageService {
     public Image addImage(Integer blogId, String description, String dimensions){
         //add an image to the blog
         Blog blog = blogRepository2.findById(blogId).orElse(null);
-        Image image = new Image(description,dimensions);
+        Image image = new Image();
+        image.setDescription(description);
+        image.setDimensions(dimensions);
         List<Image> imageList = blog.getImageList();
         imageList.add(image);
         blog.setImageList(imageList);
@@ -42,7 +44,7 @@ public class ImageService {
         imageRepository2.deleteById(id);
     }
 
-    public int countImagesInScreen(Integer id, String screenDimensions) {
+    public int countImagesInScreen(Integer id,String screenDimensions){
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
         return 0;
     }
