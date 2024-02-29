@@ -1,9 +1,6 @@
 package com.driver.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Image {
@@ -13,10 +10,16 @@ public class Image {
     String description;
     String dimensions;
 
+    @ManyToOne
+    @JoinColumn
     Blog blog;
     public Image() {
     }
 
+    public Image(String description, String dimensions) {
+        this.description = description;
+        this.dimensions = dimensions;
+    }
 
     public int getId() {
         return id;

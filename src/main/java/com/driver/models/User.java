@@ -1,23 +1,26 @@
 package com.driver.models;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String username;
     String password;
-    List<Blog> blogList;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    List<Blog> blogList = new ArrayList<>();
 
     public User() {
     }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
     public int getId() {
         return id;

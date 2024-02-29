@@ -20,9 +20,6 @@ public class BlogService {
     @Autowired
     UserRepository userRepository1;
 
-    @Autowired
-    ImageService imageService;
-
     public Blog createAndReturnBlog(Integer userId, String title, String content) {
         //create a blog at the current time
         User user = userRepository1.findById(userId).get();
@@ -30,35 +27,15 @@ public class BlogService {
         blog.setPubDate(new Date());
         blog.setTitle(title);
         blog.setContent(content);
-        blog.setImageList(new ArrayList<>());
         List<Blog> blogList = user.getBlogList();
         blogList.add(blog);
-        user.setBlogList(blogList);
-        userRepository1.deleteById(userId);
         userRepository1.save(user);
-        blog.setUser(user);
         blogRepository1.save(blog);
         return blog;
     }
 
     public void deleteBlog(int blogId){
         //delete blog and corresponding images
-        Blog blog = blogRepository1.findById(blogId).get();
-        List<Image> imageList = blog.getImageList();
-        for(Image image : imageList){
-            imageService.deleteImage(image.getId());
-        }
-        User user = blog.getUser();
-        List<Blog> blogList = user.getBlogList();
-        for(int i=0;i<blogList.size();i++){
-            if(blogList.get(i)==blog){
-                blogList.remove(i);
-                break;
-            }
-        }
-        user.setBlogList(blogList);
-        userRepository1.deleteById(user.getId());
-        userRepository1.save(user);
         blogRepository1.deleteById(blogId);
     }
 }

@@ -1,24 +1,37 @@
 package com.driver.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String title;
     String content;
+    @CreationTimestamp
     Date pubDate;
-    List<Image> imageList;
+
+    @ManyToOne
+    @JoinColumn
     User user;
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    List<Image> imageList=new ArrayList<>();
+
     public Blog() {
+    }
+
+    public Blog(String title, String content, Date pubDate, User user) {
+        this.title = title;
+        this.content = content;
+        this.pubDate = pubDate;
+        this.user = user;
     }
 
     public int getId() {
