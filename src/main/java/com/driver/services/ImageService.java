@@ -21,34 +21,31 @@ public class ImageService {
         Image image = new Image();
         image.setDescription(description);
         image.setDimensions(dimensions);
-        List<Image> imageList = blog.getImageList();
-        imageList.add(image);
-        blog.setImageList(imageList);
-        blogRepository2.deleteById(blogId);
+        blog.getImageList().add(image);
         blogRepository2.save(blog);
-        image.setBlog(blog);
-        imageRepository2.save(image);
+        //imageRepository2.save(image);
         return image;
     }
 
     public void deleteImage(Integer id){
-        Image image = imageRepository2.findById(id).get();
-        Blog blog = image.getBlog();
-        List<Image> imageList = blog.getImageList();
-        for(int i=0;i<imageList.size();i++){
-            if(imageList.get(i)==image){
-                imageList.remove(i);
-                break;
-            }
-        }
-        blog.setImageList(imageList);
-        blogRepository2.deleteById(blog.getId());
-        blogRepository2.save(blog);
         imageRepository2.deleteById(id);
     }
 
     public int countImagesInScreen(Integer id,String screenDimensions){
         //Find the number of images of given dimensions that can fit in a screen having `screenDimensions`
-        return 0;
+        Image image = imageRepository2.findById(id).get();
+        int countImages = 0;
+        String[] screenSize = screenDimensions.split("X");
+        String[] imageSize = image.getDimensions().split("X");
+
+        // finding height and width of image
+        int imageH = Integer.parseInt(imageSize[0]);
+        int imageW = Integer.parseInt(imageSize[1]);
+
+        // finding height and width of screen
+        int screenH = Integer.parseInt(screenSize[0]);
+        int screenW = Integer.parseInt(screenSize[1]);
+
+        return (screenH/imageH)*(screenW/imageW);
     }
 }
